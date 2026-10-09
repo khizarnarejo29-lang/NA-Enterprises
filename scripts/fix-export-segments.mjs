@@ -7,11 +7,27 @@
 //   out/contact/__next.contact/__PAGE__.txt
 // Every prefetch then 404s. This script flattens those folders back into the
 // expected file names. On Linux/macOS builds there is nothing to fix.
+//
+// It only applies when this build actually ran a static export. Hosts such as
+// Hostinger's Node.js hosting replace `output: "export"` with
+// `output: "standalone"` before building, so no `out/` is produced and there is
+// nothing to fix. A real export that fails to produce `out/` is still an error.
 import fs from "node:fs";
 import path from "node:path";
 
 const outDir = path.resolve(process.argv[2] ?? "out");
+const distDir = path.resolve(".next");
 let fixed = 0;
+
+/** True when the build that just finished ran `output: "export"`. */
+function exportRanThisBuild() {
+  // Next writes BUILD_ID on every build and export-detail.json only when it
+  // exports. Comparing times ignores a leftover file from an earlier build.
+  const detail = path.join(distDir, "export-detail.json");
+  const buildId = path.join(distDir, "BUILD_ID");
+  if (!fs.existsSync(detail) || !fs.existsSync(buildId)) return false;
+  return fs.statSync(detail).mtimeMs >= fs.statSync(buildId).mtimeMs;
+}
 
 function filesUnder(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
@@ -38,8 +54,12 @@ function walk(dir) {
   }
 }
 
+if (!exportRanThisBuild()) {
+  console.log("fix-export-segments: this build did not run a static export (e.g. a server/standalone build); nothing to fix");
+  process.exit(0);
+}
 if (!fs.existsSync(outDir)) {
-  console.error(`fix-export-segments: ${outDir} does not exist`);
+  console.error(`fix-export-segments: static export ran but ${outDir} does not exist`);
   process.exit(1);
 }
 walk(outDir);
