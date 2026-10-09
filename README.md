@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# naenterprises.site
 
-## Getting Started
+Static marketing website built with Next.js 16 (App Router, TypeScript) and Tailwind CSS v4,
+exported as plain HTML to `out/`.
 
-First, run the development server:
+## Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run typecheck
+npm run lint
+npm run build          # writes the static site to out/
+npm start              # serves out/ locally
+npm run check:content  # fails while any PLACEHOLDER content remains
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What                                  | Where                          |
+| ------------------------------------- | ------------------------------ |
+| Business details, services, projects, testimonials, plans, jobs, FAQs | `src/content/site.ts` |
+| Shared page sections (services grid, portfolio, pricing…) | `src/components/sections.tsx` |
+| Contact form (validation, email hand-off) | `src/components/contact-form.tsx` |
+| Placeholder styling | `src/components/placeholder.tsx` |
+| Pages                                 | `src/app/**/page.tsx`          |
+| Per-page metadata and canonical URLs  | `src/lib/seo.ts`               |
+| Header, footer, breadcrumbs           | `src/components/`              |
+| Sitemap / robots.txt                  | `src/app/sitemap.ts`, `src/app/robots.ts` |
+| Custom 404                            | `src/app/not-found.tsx`        |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To add a service, add an entry to `services` in `src/content/site.ts`. Its page, the
+navigation links and its sitemap entry are generated automatically.
 
-## Learn More
+Nothing about the business is confirmed yet. Empty values in `site.ts` show as clearly labelled
+placeholders on the site, and a preview banner is shown while `siteConfig.preview` is true.
+`npm run check:content` lists every `PLACEHOLDER` that still has to be replaced.
 
-To learn more about Next.js, take a look at the following resources:
+The contact form has no backend: a valid submission opens the visitor's email app addressed to
+`siteConfig.contact.email`. While that is empty, the form says the message cannot be sent yet.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for hosting and custom-domain setup.

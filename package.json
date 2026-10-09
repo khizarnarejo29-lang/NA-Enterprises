@@ -5,8 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "postbuild": "node scripts/fix-export-segments.mjs out",
+    "start": "npx serve@14.2.4 out",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "check:content": "node scripts/check-content.mjs"
   },
   "dependencies": {
     "next": "16.4.0",
