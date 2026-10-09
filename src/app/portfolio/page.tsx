@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Portfolio",
-  description: `Examples of SEO, social media, content writing and logo design work by ${siteConfig.name}.`,
+  description: `The ${siteConfig.name} portfolio of SEO, social media marketing, content writing and logo design work.`,
   path: "/portfolio/",
 });
 
@@ -16,7 +16,7 @@ export default function PortfolioPage() {
     <>
       <PageHeader
         title="Portfolio"
-        intro="A selection of our work."
+        intro={has.projects ? "A selection of our work." : "Examples of our work will be published here."}
         crumbs={[{ href: "/portfolio/", label: "Portfolio" }]}
       />
       <Section id="projects" eyebrow="Our work" title="Projects">

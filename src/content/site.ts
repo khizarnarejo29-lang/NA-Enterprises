@@ -94,7 +94,7 @@ export const services: Service[] = [
     summary: "Using social media platforms to reach your audience, share your message and build your brand.",
     placeholder: false,
     description: [
-      "Social media marketing means planning and publishing content on platforms such as Facebook, Instagram, LinkedIn or TikTok to connect with customers and promote a business.",
+      "Social media marketing means planning and publishing content on social media to connect with customers and promote a business.",
     ],
     includes: [], // PLACEHOLDER: what NA Enterprises' social media marketing service actually includes
   },
@@ -104,7 +104,7 @@ export const services: Service[] = [
     summary: "Clear, purposeful written content for your website, marketing and communications.",
     placeholder: false,
     description: [
-      "Content writing is the creation of written material such as website pages, articles, product descriptions and social media posts, written for a specific audience and purpose.",
+      "Content writing is the creation of written material for a specific audience and purpose.",
     ],
     includes: [], // PLACEHOLDER: what NA Enterprises' content writing service actually includes
   },
@@ -141,6 +141,7 @@ export const awards: { title: string; issuer: string; year: string }[] = [];
 
 export type Project = { title: string; client: string; category: string; summary: string; result?: string };
 // PLACEHOLDER: add completed projects. Only publish results the client has agreed to share.
+// While empty, /portfolio/ shows "Portfolio coming soon" and the home page hides the section.
 export const projects: Project[] = [];
 
 export type Testimonial = { quote: string; name: string; role: string };

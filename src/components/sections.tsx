@@ -179,18 +179,18 @@ export function Awards() {
 }
 
 export function PortfolioGrid({ limit }: { limit?: number }) {
-  if (projects.length === 0) {
+  if (!has.projects) {
     return (
-      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {[1, 2, 3].slice(0, limit ?? 3).map((n) => (
-          <li key={n}>
-            <Placeholder title={`Project ${n}`} className="h-full">
-              Client, category, a short summary and (with the client&apos;s agreement) the results. Add to{" "}
-              <code>projects</code> in site.ts.
-            </Placeholder>
-          </li>
-        ))}
-      </ul>
+      <div className={`${card} max-w-2xl`}>
+        <h3 className="text-lg font-semibold">Portfolio coming soon</h3>
+        <p className="mt-2 text-muted">
+          Examples of our work have not been published yet. Please{" "}
+          <Link href="/contact/" className="font-semibold text-brand underline underline-offset-2">
+            get in touch
+          </Link>{" "}
+          if you would like to discuss your project.
+        </p>
+      </div>
     );
   }
   return (
