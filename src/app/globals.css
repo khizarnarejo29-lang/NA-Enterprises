@@ -220,7 +220,7 @@ input.field:focus-within {
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media all {
   .orb {
     animation: orb-float 14s ease-in-out infinite alternate;
   }
@@ -242,7 +242,7 @@ input.field:focus-within {
 /* ---------- Scroll reveal ----------
    Content is visible by default. Only when JavaScript is running (html.js)
    does it start hidden and fade in as it enters the viewport. */
-@media (prefers-reduced-motion: no-preference) {
+@media all {
   html.js [data-reveal] {
     opacity: 0;
     transform: translateY(28px);
@@ -266,7 +266,7 @@ input.field:focus-within {
   display: flex;
   width: max-content;
 }
-@media (prefers-reduced-motion: no-preference) {
+@media all {
   .marquee-track {
     animation: marquee 40s linear infinite;
   }
@@ -292,7 +292,7 @@ input.field:focus-within {
 .word-rotator > span:not(:first-child) {
   visibility: hidden;
 }
-@media (prefers-reduced-motion: no-preference) {
+@media all {
   .word-rotator > span {
     visibility: visible !important;
     transform: translateY(110%);
@@ -321,7 +321,7 @@ input.field:focus-within {
   left: 50%;
   transform: rotate(var(--a)) translate(var(--r)) rotate(calc(-1 * var(--a)));
 }
-@media (prefers-reduced-motion: no-preference) {
+@media all {
   .orbit-spin {
     animation: spin 40s linear infinite;
   }
@@ -341,7 +341,7 @@ input.field:focus-within {
 }
 
 /* ---------- Process line ---------- */
-@media (prefers-reduced-motion: no-preference) {
+@media all {
   html.js .process-line {
     transform: scaleX(0);
     transform-origin: left;
@@ -377,9 +377,6 @@ input.field:focus-within {
 }
 @keyframes hero-float {
   to { transform: translateY(-14px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-float { animation: none; }
 }
 
 @supports (animation-timeline: scroll()) {
