@@ -21,8 +21,8 @@ export function ServiceMarquee() {
 
 /** Two rows of huge outlined words that slide in opposite directions while scrolling. */
 export function ScrollWords() {
-  const a = services.slice(0, 4).map((s) => s.short.toUpperCase()).join(" · ");
-  const b = services.slice(4).map((s) => s.short.toUpperCase()).join(" · ");
+  const a = services.slice(0, 5).map((s) => s.short.toUpperCase()).join(" · ");
+  const b = services.slice(5).map((s) => s.short.toUpperCase()).join(" · ");
   return (
     <div aria-hidden="true" className="overflow-hidden py-10 select-none">
       <p data-scroll="slide" className="text-outline text-[11vw] leading-[1.05] font-black whitespace-nowrap">

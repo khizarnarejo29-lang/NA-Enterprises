@@ -6,6 +6,8 @@ import { PageHeader } from "@/components/page-header";
 import { Placeholder } from "@/components/placeholder";
 import { ServiceDemo } from "@/components/service-demos";
 import { ServiceIcon } from "@/components/service-icon";
+import { PartnerCards } from "@/components/partners";
+import { partners } from "@/content/site";
 import { services, siteConfig } from "@/content/site";
 import { absoluteUrl, pageMetadata } from "@/lib/seo";
 
@@ -137,6 +139,14 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
           </aside>
         )}
       </div>
+      {partners.some((p) => p.service === slug) && (
+        <section aria-labelledby="partner-heading" className="mx-auto max-w-7xl px-4 pb-8 sm:px-6">
+          <h2 id="partner-heading" className="mb-8 text-3xl font-bold tracking-tight sm:text-4xl">
+            Live with our <span className="text-gradient">partner</span>
+          </h2>
+          <PartnerCards only={slug} />
+        </section>
+      )}
       <CtaBand title={`Interested in ${service.title}?`} />
       {!service.placeholder && (
         <JsonLd

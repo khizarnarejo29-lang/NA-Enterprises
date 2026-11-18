@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Portfolio",
-  description: `The ${siteConfig.name} portfolio of SEO, social media marketing, content writing and logo design work.`,
+  description: `The ${siteConfig.name} portfolio: websites, SaaS, branding, marketing and content work.`,
   path: "/portfolio/",
 });
 

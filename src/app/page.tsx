@@ -3,6 +3,7 @@ import { ContactForm } from "@/components/contact-form";
 import { CtaBand } from "@/components/cta-band";
 import { Hero } from "@/components/hero";
 import { ScrollWords, ServiceMarquee } from "@/components/marquee";
+import { PartnerCards, hasPartners } from "@/components/partners";
 import { ProcessSteps } from "@/components/process-steps";
 import { Section } from "@/components/section";
 import { ServiceShowcase, ServiceTiles } from "@/components/service-showcase";
@@ -24,6 +25,20 @@ export default function HomePage() {
             <ClientsStrip />
           </div>
         </section>
+      )}
+
+      {hasPartners && (
+        <Section
+          id="partners"
+          eyebrow="Our partners"
+          title={
+            <>
+              Trusted by <span className="text-gradient">businesses we power</span>
+            </>
+          }
+        >
+          <PartnerCards />
+        </Section>
       )}
 
       <Section

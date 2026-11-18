@@ -1,6 +1,7 @@
 import { CtaBand } from "@/components/cta-band";
 import { PageHeader } from "@/components/page-header";
 import { Placeholder } from "@/components/placeholder";
+import { PartnerCards, hasPartners } from "@/components/partners";
 import { Section } from "@/components/section";
 import { CompanyFacts, CompanyOverview, MissionVision, WhyChooseUs, has } from "@/components/sections";
 import { company, siteConfig } from "@/content/site";
@@ -67,6 +68,12 @@ export default function AboutPage() {
           )}
         </div>
       </Section>
+      )}
+
+      {hasPartners && (
+        <Section id="partners" eyebrow="Our partners" title="Businesses we work with">
+          <PartnerCards />
+        </Section>
       )}
 
       {has.whyChooseUs && (
