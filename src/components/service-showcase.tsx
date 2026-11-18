@@ -72,7 +72,7 @@ export function ServiceTiles() {
             className="spotlight-host glow-border group glass flex h-full flex-col overflow-hidden p-6 transition duration-300 hover:-translate-y-1"
           >
             <span className="spotlight pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            <span className="bg-gradient-brand relative flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-[0_10px_30px_-10px_rgb(139_92_246/0.8)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+            <span className="bg-gradient-brand relative flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-[0_10px_30px_-10px_rgb(10_108_255/0.8)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
               <ServiceIcon slug={s.slug} />
             </span>
             <span className="relative mt-5 text-lg font-semibold">{s.title}</span>

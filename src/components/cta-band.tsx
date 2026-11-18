@@ -21,7 +21,7 @@ export function CtaBand({
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           <Link
             href="/contact/"
-            className="inline-flex h-12 items-center justify-center rounded-full bg-white px-8 font-semibold text-[#2a1d7a] shadow-xl transition hover:-translate-y-0.5"
+            className="inline-flex h-12 items-center justify-center rounded-full bg-white px-8 font-semibold text-[#0a2a6b] shadow-xl transition hover:-translate-y-0.5"
           >
             Request a quote
           </Link>

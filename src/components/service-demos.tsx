@@ -88,13 +88,13 @@ function LogoDemo({ className }: Props) {
       <svg viewBox="0 0 100 100" className="absolute top-[10%] left-[34%] w-[32%] overflow-visible">
         <defs>
           <linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#6d5dfc" />
-            <stop offset=".5" stopColor="#a855f7" />
+            <stop offset="0" stopColor="#1d5cff" />
+            <stop offset=".5" stopColor="#0a84ff" />
             <stop offset="1" stopColor="#22d3ee" />
           </linearGradient>
         </defs>
         <path className="s5 from-zoom" d="M50 6 88 28v44L50 94 12 72V28z" fill="url(#logo-g)" opacity=".95" />
-        <path className="d-draw" pathLength={1} d="M50 6 88 28v44L50 94 12 72V28z" fill="none" stroke="#a99cff" strokeWidth="2.5" strokeLinejoin="round" />
+        <path className="d-draw" pathLength={1} d="M50 6 88 28v44L50 94 12 72V28z" fill="none" stroke="#7ab8ff" strokeWidth="2.5" strokeLinejoin="round" />
         <path className="d-draw late" pathLength={1} d="M34 68 50 30l16 38M40 55h20" fill="none" stroke="#fff" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
         {[[50, 6], [88, 28], [88, 72], [50, 94], [12, 72], [12, 28]].map(([x, y], i) => (
           <rect key={i} className="s2 from-pop" x={x - 2.5} y={y - 2.5} width="5" height="5" fill="#0b0d1f" stroke="#22d3ee" strokeWidth="1.2" />
@@ -109,7 +109,7 @@ function LogoDemo({ className }: Props) {
       </div>
       <p className="s7 absolute top-[78%] inset-x-0 text-center text-[0.8em] tracking-[0.4em] text-white/55">YOUR TAGLINE</p>
       <div className="absolute bottom-[5%] left-1/2 flex -translate-x-1/2 gap-[0.6em]">
-        {["#6d5dfc", "#a855f7", "#22d3ee", "#f472b6", "#ffffff"].map((c) => (
+        {["#1d5cff", "#0a84ff", "#22d3ee", "#f472b6", "#ffffff"].map((c) => (
           <i key={c} className="s8 from-pop h-[1.5em] w-[1.5em] rounded-full ring-2 ring-white/10" style={{ background: c }} />
         ))}
       </div>
@@ -128,12 +128,13 @@ function CardDemo({ className }: Props) {
           <div className="card-face absolute inset-0 overflow-hidden rounded-[0.8em] bg-[#12142b] p-[7%] shadow-[0_2em_4em_-1em_rgb(0_0_0/0.8)] ring-1 ring-white/15">
             <i className="s1 from-x d-grad absolute inset-x-0 top-0 h-[6%]" />
             <i className="s2 from-pop d-grad absolute -right-[12%] -bottom-[30%] h-[80%] w-[45%] rounded-full opacity-60 blur-[0.4em]" />
-            <span className="s2 from-pop d-grad flex h-[2.6em] w-[2.6em] items-center justify-center rounded-[0.6em] text-[0.9em] font-black">NA</span>
+            {/* eslint-disable-next-line @next/next/no-img-element -- decorative, static export */}
+            <img src="/brand/logo-mark-dark.png" alt="" className="s2 from-pop h-[2.4em] w-auto" />
             <p className="s3 from-left mt-[9%] text-[1.4em] font-bold">Your Name</p>
             <p className="s3 from-left text-[0.85em] tracking-[0.2em] text-[#22d3ee]">CREATIVE DIRECTOR</p>
           </div>
           {/* Back */}
-          <div className="card-face card-back absolute inset-0 overflow-hidden rounded-[0.8em] bg-gradient-to-br from-[#6d5dfc] via-[#8b5cf6] to-[#0891b2] p-[7%] ring-1 ring-white/20">
+          <div className="card-face card-back absolute inset-0 overflow-hidden rounded-[0.8em] bg-gradient-to-br from-[#1d5cff] via-[#0a6cff] to-[#0891b2] p-[7%] ring-1 ring-white/20">
             <div className="flex h-full justify-between">
               <ul className="flex flex-col justify-center gap-[0.7em] text-[0.85em]">
                 <li>☎ 0300 0000000</li>
@@ -207,7 +208,7 @@ function SocialDemo({ className }: Props) {
         Post shared
       </div>
       <div className="s7 from-left d-panel absolute top-[66%] left-[5%] flex items-center gap-[0.5em] px-[0.8em] py-[0.5em] text-[0.8em]">
-        <span className="h-[1.4em] w-[1.4em] rounded-full bg-[#a855f7]" />
+        <span className="h-[1.4em] w-[1.4em] rounded-full bg-[#0a84ff]" />
         New comment
       </div>
     </Frame>
@@ -240,7 +241,7 @@ function SeoDemo({ className }: Props) {
           <i className="d-bar hi w-[60%] !bg-white/40" />
           <i className="d-bar w-[85%]" />
         </div>
-        <div className={`${row} rank-me z-10 !border-[#8b7bff] !bg-[#1a1640] shadow-[0_0_2em_-0.3em_#8b7bff]`}>
+        <div className={`${row} rank-me z-10 !border-[#3b82ff] !bg-[#0d1a40] shadow-[0_0_2em_-0.3em_#3b82ff]`}>
           <span className="text-[0.75em] text-[#22d3ee]">yourbusiness.pk</span>
           <span className="text-[0.95em] font-bold">Your Business – Best in Karachi</span>
           <i className="d-bar w-[85%]" />
@@ -278,7 +279,7 @@ function ContentDemo({ className }: Props) {
           ].map(([s, w], i) => (
             <i key={i} className={`${s} from-x d-bar !bg-[#14152b]/20`} style={{ width: w }} />
           ))}
-          <i className="s5 from-x mt-[0.5em] d-bar !h-[0.75em] w-[45%] !bg-[#6d5dfc]/70" />
+          <i className="s5 from-x mt-[0.5em] d-bar !h-[0.75em] w-[45%] !bg-[#1d5cff]/70" />
           {[
             ["s5", "90%"],
             ["s6", "94%"],
@@ -352,7 +353,7 @@ function GraphicDemo({ className }: Props) {
       <div className="d-panel absolute top-[7%] right-[4%] w-[32%] p-[0.7em]">
         <p className="mb-[0.5em] text-[0.75em] tracking-[0.15em] text-white/50">LAYERS</p>
         <div className="relative">
-          <i className="layer-hi absolute inset-x-0 top-0 h-[20%] rounded-[0.35em] bg-[#6d5dfc]/40" />
+          <i className="layer-hi absolute inset-x-0 top-0 h-[20%] rounded-[0.35em] bg-[#1d5cff]/40" />
           {layers.map((l, i) => (
             <p key={l} className={`relative flex h-[2em] items-center gap-[0.5em] px-[0.5em] text-[0.8em] s${i + 1}`}>
               <span className="text-white/40">◉</span>
@@ -376,7 +377,7 @@ function VideoDemo({ className }: Props) {
   return (
     <Frame label="promo-video.prproj" className={className}>
       <div className="absolute top-[5%] left-[18%] h-[50%] w-[64%] overflow-hidden rounded-[0.5em] bg-black ring-1 ring-white/10">
-        <div className="hue-shift absolute inset-0 bg-gradient-to-br from-[#6d5dfc] via-[#a855f7] to-[#22d3ee]" />
+        <div className="hue-shift absolute inset-0 bg-gradient-to-br from-[#1d5cff] via-[#0a84ff] to-[#22d3ee]" />
         <i className="scene-ball absolute bottom-[20%] left-[8%] h-[30%] w-[22%] rounded-full bg-white/35 blur-[0.15em]" />
         <p className="s3 absolute inset-x-0 bottom-[8%] text-center text-[0.95em] font-semibold">
           <span className="rounded bg-black/60 px-[0.5em] py-[0.1em]">Your story, in motion.</span>
@@ -390,8 +391,8 @@ function VideoDemo({ className }: Props) {
           ))}
         </div>
         <div className="mt-[1%] flex h-[24%] gap-[1%]">
-          <i className="s1 from-x h-full w-[34%] rounded-[0.3em] bg-[#6d5dfc]" />
-          <i className="s2 from-x h-full w-[28%] rounded-[0.3em] bg-[#a855f7]" />
+          <i className="s1 from-x h-full w-[34%] rounded-[0.3em] bg-[#1d5cff]" />
+          <i className="s2 from-x h-full w-[28%] rounded-[0.3em] bg-[#0a84ff]" />
           <i className="s3 from-x h-full w-[36%] rounded-[0.3em] bg-[#0891b2]" />
         </div>
         <div className="mt-[1%] flex h-[18%] gap-[1%] pl-[20%]">

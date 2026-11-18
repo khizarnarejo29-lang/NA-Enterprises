@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section className="relative isolate overflow-hidden">
       <div className="bg-grid absolute inset-0 -z-10" />
-      <div className="orb -z-10 -top-40 -left-32 h-[36rem] w-[36rem] bg-[#6d5dfc]" />
+      <div className="orb -z-10 -top-40 -left-32 h-[36rem] w-[36rem] bg-[#1d5cff]" />
       <div className="orb -z-10 top-40 -right-40 h-[30rem] w-[30rem] bg-[#0891b2]" style={{ animationDelay: "-6s" }} />
 
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pt-8 pb-24 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pt-20 lg:pb-32">
@@ -75,7 +75,7 @@ function HeroVisual() {
           {services.map((s, i) => (
             <div key={s.slug} className="orbit-item" style={{ "--a": `${(360 / services.length) * i}deg`, "--r": "min(18rem, 39vw)" } as CSSProperties}>
               <div className="orbit-counter -translate-x-1/2 -translate-y-1/2">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/15 bg-[#0d1024]/90 text-brand-strong shadow-[0_0_30px_-6px_rgb(139_123_255/0.8)] backdrop-blur sm:h-14 sm:w-14">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/15 bg-[#0d1024]/90 text-brand-strong shadow-[0_0_30px_-6px_rgb(59_130_255/0.8)] backdrop-blur sm:h-14 sm:w-14">
                   <ServiceIcon slug={s.slug} size={24} />
                 </span>
               </div>
@@ -84,10 +84,11 @@ function HeroVisual() {
         </div>
         {/* Core */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <span className="pulse-ring absolute inset-0 rounded-3xl border border-brand" />
-          <span className="pulse-ring absolute inset-0 rounded-3xl border border-accent" style={{ animationDelay: "1.5s" }} />
-          <span className="bg-gradient-brand gradient-shift relative z-10 flex h-20 w-20 items-center justify-center rounded-3xl text-2xl font-black text-white shadow-[0_0_80px_-10px_rgb(139_92_246)]">
-            NA
+          <span className="pulse-ring absolute inset-0 rounded-full border border-brand" />
+          <span className="pulse-ring absolute inset-0 rounded-full border border-accent" style={{ animationDelay: "1.5s" }} />
+          <span className="relative z-10 flex h-24 w-24 items-center justify-center rounded-full border border-white/15 bg-[#06091c] shadow-[0_0_80px_-6px_rgb(10_108_255)] sm:h-28 sm:w-28">
+            {/* eslint-disable-next-line @next/next/no-img-element -- static export serves images as-is */}
+            <img src="/brand/logo-mark-dark.png" alt="" width={512} height={268} className="w-[78%]" />
           </span>
         </div>
       </div>

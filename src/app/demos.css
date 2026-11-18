@@ -22,7 +22,7 @@
   overflow: hidden;
   border-radius: 1.25rem;
   background:
-    radial-gradient(120% 80% at 0% 0%, rgb(109 93 252 / 0.22), transparent 55%),
+    radial-gradient(120% 80% at 0% 0%, rgb(29 92 255 / 0.22), transparent 55%),
     radial-gradient(100% 80% at 100% 100%, rgb(34 211 238 / 0.14), transparent 55%),
     #0b0d1f;
   border: 1px solid rgb(255 255 255 / 0.1);
@@ -61,7 +61,7 @@ html.js .demo:not([data-inview]) *::after {
   background: rgb(255 255 255 / 0.85);
 }
 .d-grad {
-  background: linear-gradient(120deg, #6d5dfc, #a855f7 50%, #22d3ee);
+  background: linear-gradient(120deg, #1d5cff, #0a84ff 50%, #22d3ee);
 }
 .d-panel {
   background: rgb(255 255 255 / 0.05);
@@ -164,8 +164,8 @@ html.js .demo:not([data-inview]) *::after {
   animation-name: web-click;
 }
 @keyframes web-click {
-  0%, 50% { box-shadow: 0 0 0 0 rgb(139 123 255 / 0.9); }
-  62%, 100% { box-shadow: 0 0 0 1.2em rgb(139 123 255 / 0); }
+  0%, 50% { box-shadow: 0 0 0 0 rgb(59 130 255 / 0.9); }
+  62%, 100% { box-shadow: 0 0 0 1.2em rgb(59 130 255 / 0); }
 }
 
 /* ---------- Business card ---------- */

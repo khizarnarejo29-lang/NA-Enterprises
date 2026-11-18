@@ -48,13 +48,8 @@ export function SiteHeader() {
           className="flex items-center gap-2.5 text-lg font-bold tracking-tight whitespace-nowrap"
           onClick={() => setOpen(false)}
         >
-          {/* Text monogram, not a logo. Replace with the real logo once provided. */}
-          <span
-            aria-hidden="true"
-            className="bg-gradient-brand gradient-shift flex h-10 w-10 items-center justify-center rounded-xl text-sm font-black text-white shadow-[0_0_24px_-4px_rgb(139_92_246/0.9)]"
-          >
-            NA
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element -- static export serves images as-is */}
+          <img src="/brand/logo-mark-dark.png" alt="" width={512} height={268} className="h-9 w-auto drop-shadow-[0_0_14px_rgb(10_132_255/0.45)]" />
           {siteConfig.name}
         </Link>
 
