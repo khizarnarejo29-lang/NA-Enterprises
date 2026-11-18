@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
+import { useEffect, useId, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
+import { services } from "@/content/site";
 
 type Values = {
   name: string;
@@ -65,6 +66,13 @@ export function ContactForm({ recipient }: { recipient: string }) {
   const [errors, setErrors] = useState<Errors>({});
   const [submitted, setSubmitted] = useState(false);
   const [mailto, setMailto] = useState<string | null>(null);
+
+  // "Get a quote" buttons link here with ?service=<slug>; use it as the starting subject.
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get("service");
+    const service = services.find((s) => s.slug === slug);
+    if (service) setValues((v) => (v.subject ? v : { ...v, subject: `Quote request: ${service.title}` }));
+  }, []);
 
   const set = <K extends keyof Values>(key: K, value: Values[K]) => {
     const next = { ...values, [key]: value };
@@ -209,7 +217,7 @@ export function ContactForm({ recipient }: { recipient: string }) {
         {errorText("consent")}
       </div>
 
-      <button type="submit" className="inline-flex h-12 w-full items-center justify-center rounded-md bg-brand px-6 font-semibold text-brand-foreground hover:bg-brand-strong sm:w-auto">
+      <button type="submit" className="btn-primary w-full sm:w-auto">
         Prepare email
       </button>
 

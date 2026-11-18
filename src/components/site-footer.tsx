@@ -6,20 +6,23 @@ import { ContactIcon, contactRows } from "./sections";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-border bg-surface">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
+    <footer className="relative isolate mt-auto overflow-hidden border-t border-border bg-surface">
+      <div className="orb -z-10 -bottom-40 left-1/3 h-[26rem] w-[26rem] bg-[#6d5dfc] !opacity-20" />
+      <div aria-hidden="true" className="pointer-events-none overflow-hidden pt-14 select-none">
+        <p data-scroll="slide" className="text-outline text-[16vw] leading-none font-black whitespace-nowrap">
+          NA ENTERPRISES · DIGITAL ·
+        </p>
+      </div>
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
         <div>
           <p className="flex items-center gap-2 font-bold">
-            <span aria-hidden="true" className="flex h-8 w-8 items-center justify-center rounded-md bg-brand text-xs font-extrabold text-brand-foreground">
+            <span aria-hidden="true" className="bg-gradient-brand flex h-9 w-9 items-center justify-center rounded-xl text-xs font-black text-white">
               NA
             </span>
             {siteConfig.name}
           </p>
           <p className="mt-3 text-sm text-muted">{siteConfig.tagline}</p>
-          <Link
-            href="/contact/"
-            className="mt-5 inline-flex h-10 items-center rounded-md bg-brand px-4 text-sm font-semibold text-brand-foreground hover:bg-brand-strong"
-          >
+          <Link href="/contact/" className="btn-primary mt-6 !h-10 !px-5 text-sm">
             Request a quote
           </Link>
         </div>
@@ -62,7 +65,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>
             © <CurrentYear buildYear={new Date().getFullYear()} /> {siteConfig.name}. All rights reserved.
           </p>

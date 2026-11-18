@@ -1,0 +1,343 @@
+/*
+ * Animated service previews ("demos"). Each demo is a little scene that builds
+ * itself in a 10-second loop.
+ *
+ * Rules that keep this robust:
+ * - Every element's normal style is its FINISHED state. Keyframes only describe
+ *   how it gets there, so with reduced motion (animations off) or no CSS
+ *   animation support the visitor sees the finished scene.
+ * - Stage classes .s1 to .s8 make an element appear at a fixed point in the
+ *   loop (s1 first, s8 last) from the transform in --from, then everything
+ *   fades away together just before the loop restarts.
+ * - With JavaScript on, a demo only plays while it is on screen
+ *   (MotionObserver sets data-inview on [data-animate]).
+ */
+
+.demo {
+  --dur: 10s;
+  container-type: inline-size;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgb(109 93 252 / 0.22), transparent 55%),
+    radial-gradient(100% 80% at 100% 100%, rgb(34 211 238 / 0.14), transparent 55%),
+    #0b0d1f;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  box-shadow:
+    0 30px 80px -30px rgb(0 0 0 / 0.8),
+    0 0 0 1px rgb(255 255 255 / 0.02) inset;
+  color: #e6e8ff;
+  user-select: none;
+}
+/* cqw units resolve against the .demo container only for its children. */
+.demo > * {
+  font-size: 2.6cqw;
+}
+.demo * {
+  animation-duration: var(--dur);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+html.js .demo:not([data-inview]) *,
+html.js .demo:not([data-inview]) *::before,
+html.js .demo:not([data-inview]) *::after {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo *,
+  .demo *::before,
+  .demo *::after {
+    animation: none !important;
+  }
+}
+
+/* Small helpers for scene parts. */
+.d-bar {
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.14);
+  height: 0.55em;
+}
+.d-bar.hi {
+  background: rgb(255 255 255 / 0.85);
+}
+.d-grad {
+  background: linear-gradient(120deg, #6d5dfc, #a855f7 50%, #22d3ee);
+}
+.d-panel {
+  background: rgb(255 255 255 / 0.05);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: 0.8em;
+}
+.origin-l {
+  transform-origin: left center;
+}
+
+/* ---------- Stages ---------- */
+.s1, .s2, .s3, .s4, .s5, .s6, .s7, .s8 {
+  --from: translateY(0.9em) scale(0.97);
+}
+.s1 { animation-name: d-s1; }
+.s2 { animation-name: d-s2; }
+.s3 { animation-name: d-s3; }
+.s4 { animation-name: d-s4; }
+.s5 { animation-name: d-s5; }
+.s6 { animation-name: d-s6; }
+.s7 { animation-name: d-s7; }
+.s8 { animation-name: d-s8; }
+@keyframes d-s1 { 0%, 2% { opacity: 0; transform: var(--from); } 8%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; } }
+@keyframes d-s2 { 0%, 10% { opacity: 0; transform: var(--from); } 16%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; } }
+@keyframes d-s3 { 0%, 18% { opacity: 0; transform: var(--from); } 24%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; } }
+@keyframes d-s4 { 0%, 26% { opacity: 0; transform: var(--from); } 32%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; } }
+@keyframes d-s5 { 0%, 34% { opacity: 0; transform: var(--from); } 40%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; } }
+@keyframes d-s6 { 0%, 42% { opacity: 0; transform: var(--from); } 48%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; } }
+@keyframes d-s7 { 0%, 52% { opacity: 0; transform: var(--from); } 58%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; } }
+@keyframes d-s8 { 0%, 62% { opacity: 0; transform: var(--from); } 68%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; } }
+
+/* Presets for --from. */
+.from-x { --from: scaleX(0); transform-origin: left center; }
+.from-zoom { --from: scale(0.6); }
+.from-pop { --from: scale(0); }
+.from-down { --from: translateY(-120%); }
+.from-left { --from: translateX(-1.5em); }
+.from-right { --from: translateX(1.5em); }
+
+/* Typing: text is revealed left to right. */
+.d-type {
+  animation-name: d-type;
+  animation-timing-function: steps(22, end);
+  white-space: nowrap;
+}
+@keyframes d-type {
+  0%, 2% { clip-path: inset(0 100% 0 0); }
+  14%, 100% { clip-path: inset(0 0 0 0); }
+}
+.d-caret {
+  display: inline-block;
+  width: 0.12em;
+  height: 1em;
+  margin-left: 0.1em;
+  vertical-align: -0.12em;
+  background: #22d3ee;
+  animation: d-blink 1s steps(2, start) infinite !important;
+}
+@keyframes d-blink {
+  to { visibility: hidden; }
+}
+
+/* SVG stroke drawing (paths use pathLength="1"). */
+.d-draw {
+  stroke-dasharray: 1;
+  animation-name: d-draw;
+}
+.d-draw.late {
+  animation-name: d-draw-late;
+}
+@keyframes d-draw {
+  0%, 6% { stroke-dashoffset: 1; opacity: 1; }
+  32%, 88% { stroke-dashoffset: 0; opacity: 1; }
+  95%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+@keyframes d-draw-late {
+  0%, 30% { stroke-dashoffset: 1; opacity: 1; }
+  48%, 88% { stroke-dashoffset: 0; opacity: 1; }
+  95%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* ---------- Website ---------- */
+.web-cursor {
+  position: absolute;
+  width: 1.6em;
+  left: 30%;
+  top: 46%;
+  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 0.6));
+  animation-name: web-cursor;
+}
+@keyframes web-cursor {
+  0%, 30% { transform: translate(18em, 10em); opacity: 0; }
+  36% { opacity: 1; }
+  48% { transform: translate(0, 0); }
+  51% { transform: translate(0, 0) scale(0.8); }
+  54%, 82% { transform: translate(0, 0) scale(1); opacity: 1; }
+  92%, 100% { transform: translate(6em, 4em); opacity: 0; }
+}
+.web-click {
+  animation-name: web-click;
+}
+@keyframes web-click {
+  0%, 50% { box-shadow: 0 0 0 0 rgb(139 123 255 / 0.9); }
+  62%, 100% { box-shadow: 0 0 0 1.2em rgb(139 123 255 / 0); }
+}
+
+/* ---------- Business card ---------- */
+.card-scene {
+  perspective: 60em;
+}
+.card-3d {
+  transform-style: preserve-3d;
+  animation-name: card-flip;
+  animation-timing-function: cubic-bezier(0.6, 0, 0.3, 1);
+}
+.card-face {
+  backface-visibility: hidden;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+@keyframes card-flip {
+  0%, 36% { transform: rotateY(-12deg) rotateX(6deg); }
+  50%, 80% { transform: rotateY(168deg) rotateX(6deg); }
+  94%, 100% { transform: rotateY(348deg) rotateX(6deg); }
+}
+.card-float {
+  animation: card-float 6s ease-in-out infinite alternate !important;
+}
+@keyframes card-float {
+  to { transform: translateY(-0.6em) rotate(-8deg); }
+}
+
+/* ---------- Social ---------- */
+.like-heart {
+  animation-name: like-heart;
+}
+@keyframes like-heart {
+  0%, 36% { transform: scale(1); color: rgb(255 255 255 / 0.6); }
+  40% { transform: scale(1.6); color: #f472b6; }
+  46%, 100% { transform: scale(1); color: #f472b6; }
+}
+.ticker {
+  display: inline-grid;
+  height: 1.2em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.ticker > span {
+  line-height: 1.2em;
+  grid-area: 1 / 1;
+  animation-name: ticker;
+  animation-timing-function: steps(1, end);
+}
+.ticker > span:nth-child(2) { animation-name: ticker-2; }
+.ticker > span:nth-child(3) { animation-name: ticker-3; }
+.ticker > span:nth-child(4) { animation-name: ticker-4; }
+/* Each number shows in its own slice of the loop; the last one is the resting state. */
+@keyframes ticker { 0%, 39.9% { opacity: 1; } 40%, 100% { opacity: 0; } }
+@keyframes ticker-2 { 0%, 39.9% { opacity: 0; } 40%, 54.9% { opacity: 1; } 55%, 100% { opacity: 0; } }
+@keyframes ticker-3 { 0%, 54.9% { opacity: 0; } 55%, 69.9% { opacity: 1; } 70%, 100% { opacity: 0; } }
+@keyframes ticker-4 { 0%, 69.9% { opacity: 0; } 70%, 100% { opacity: 1; } }
+.ticker > span:not(:last-child) {
+  opacity: 0;
+}
+.float-heart {
+  position: absolute;
+  bottom: 18%;
+  color: #f472b6;
+  opacity: 0;
+  animation: float-heart 3.2s ease-out infinite !important;
+  animation-delay: var(--d, 0s) !important;
+}
+@keyframes float-heart {
+  0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translate(var(--x, 0.5em), -9em) scale(1.1); opacity: 0; }
+}
+
+/* ---------- SEO ---------- */
+.rank-row {
+  --step: calc(100% + 0.5em);
+}
+.rank-me { transform: translateY(0); animation-name: rank-me; }
+.rank-a { transform: translateY(var(--step)); animation-name: rank-a; }
+.rank-b { transform: translateY(calc(var(--step) * 2)); animation-name: rank-b; }
+.rank-c { transform: translateY(calc(var(--step) * 3)); animation-name: rank-c; }
+@keyframes rank-me {
+  0%, 36% { transform: translateY(calc(var(--step) * 3)); opacity: 1; }
+  44%, 50% { transform: translateY(calc(var(--step) * 2)); }
+  56%, 62% { transform: translateY(var(--step)); }
+  68%, 88% { transform: translateY(0); opacity: 1; }
+  95%, 100% { transform: translateY(0); opacity: 0; }
+}
+@keyframes rank-a {
+  0%, 62% { transform: translateY(0); }
+  68%, 100% { transform: translateY(var(--step)); }
+}
+@keyframes rank-b {
+  0%, 50% { transform: translateY(var(--step)); }
+  56%, 100% { transform: translateY(calc(var(--step) * 2)); }
+}
+@keyframes rank-c {
+  0%, 36% { transform: translateY(calc(var(--step) * 2)); }
+  44%, 100% { transform: translateY(calc(var(--step) * 3)); }
+}
+
+/* ---------- Content ---------- */
+.meter-fill {
+  transform-origin: left center;
+  animation-name: meter-fill;
+}
+@keyframes meter-fill {
+  0%, 20% { transform: scaleX(0.08); }
+  70%, 88% { transform: scaleX(1); }
+  95%, 100% { transform: scaleX(1); opacity: 0; }
+}
+
+/* ---------- Graphic design ---------- */
+.layer-hi {
+  animation-name: layer-hi;
+  animation-timing-function: steps(1, end);
+}
+@keyframes layer-hi {
+  0% { transform: translateY(0); }
+  16% { transform: translateY(100%); }
+  24% { transform: translateY(200%); }
+  32% { transform: translateY(300%); }
+  40%, 100% { transform: translateY(400%); }
+}
+.select-box {
+  animation-name: select-box;
+}
+@keyframes select-box {
+  0%, 12% { left: 8%; top: 8%; width: 84%; height: 84%; opacity: 0.9; }
+  18%, 24% { left: 26%; top: 14%; width: 48%; height: 36%; }
+  30%, 40% { left: 14%; top: 56%; width: 72%; height: 14%; }
+  46%, 60% { left: 30%; top: 76%; width: 40%; height: 10%; opacity: 0.9; }
+  70%, 100% { left: 30%; top: 76%; width: 40%; height: 10%; opacity: 0; }
+}
+
+/* ---------- Video ---------- */
+.hue-shift {
+  animation: hue-shift 8s linear infinite !important;
+}
+@keyframes hue-shift {
+  to { filter: hue-rotate(360deg); }
+}
+.scene-ball {
+  animation: scene-ball 4s ease-in-out infinite alternate !important;
+}
+@keyframes scene-ball {
+  to { transform: translateX(11em) translateY(-1.5em) scale(1.3); }
+}
+.playhead {
+  animation-name: playhead;
+  animation-timing-function: linear;
+}
+@keyframes playhead {
+  0% { left: 2%; }
+  100% { left: 98%; }
+}
+.wave > i {
+  display: block;
+  width: 0.25em;
+  border-radius: 1em;
+  background: #22d3ee;
+  height: var(--h, 60%);
+  animation: wave 1.2s ease-in-out infinite alternate !important;
+  animation-delay: var(--d, 0s) !important;
+}
+@keyframes wave {
+  from { transform: scaleY(0.3); }
+  to { transform: scaleY(1); }
+}

@@ -6,68 +6,26 @@
  * their device prefers dark.
  */
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --muted: #475569;
-  --surface: #f1f5f9;
-  --border: #e2e8f0;
-  --input-border: #64748b;
-  --brand: #0f4c81;
-  --brand-strong: #0a365c;
+  /* Dark premium palette. The site has a single dark theme. */
+  --background: #05060f;
+  --foreground: #eceefb;
+  --muted: #a1a7c4;
+  --surface: #0a0c1d;
+  --card: #0d1024;
+  --border: rgb(255 255 255 / 0.09);
+  --input-border: #4b5275;
+  --brand: #8b7bff;
+  --brand-strong: #a99cff;
   --brand-foreground: #ffffff;
-  --accent: #c2410c;
-  --hero-from: #0a365c;
-  --hero-to: #0f4c81;
-  --placeholder-bg: #fffbeb;
-  --placeholder-border: #b45309;
-  --placeholder-text: #78350f;
-  --danger: #b91c1c;
-  --success: #15803d;
-  color-scheme: light;
-}
-
-:root[data-theme="dark"] {
-  --background: #0b1120;
-  --foreground: #e2e8f0;
-  --muted: #94a3b8;
-  --surface: #111a2e;
-  --border: #1e293b;
-  --input-border: #64748b;
-  --brand: #60a5fa;
-  --brand-strong: #93c5fd;
-  --brand-foreground: #0b1120;
-  --accent: #fb923c;
-  --hero-from: #0b1730;
-  --hero-to: #12305a;
-  --placeholder-bg: #261a04;
+  --accent: #22d3ee;
+  --pink: #f472b6;
+  --grad: linear-gradient(120deg, #6d5dfc 0%, #a855f7 45%, #22d3ee 100%);
+  --placeholder-bg: #221704;
   --placeholder-border: #f59e0b;
   --placeholder-text: #fcd34d;
   --danger: #f87171;
   --success: #4ade80;
   color-scheme: dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --background: #0b1120;
-    --foreground: #e2e8f0;
-    --muted: #94a3b8;
-    --surface: #111a2e;
-    --border: #1e293b;
-    --input-border: #64748b;
-    --brand: #60a5fa;
-    --brand-strong: #93c5fd;
-    --brand-foreground: #0b1120;
-    --accent: #fb923c;
-    --hero-from: #0b1730;
-    --hero-to: #12305a;
-    --placeholder-bg: #261a04;
-    --placeholder-border: #f59e0b;
-    --placeholder-text: #fcd34d;
-    --danger: #f87171;
-    --success: #4ade80;
-    color-scheme: dark;
-  }
 }
 
 @theme inline {
@@ -81,6 +39,8 @@
   --color-brand-strong: var(--brand-strong);
   --color-brand-foreground: var(--brand-foreground);
   --color-accent: var(--accent);
+  --color-card: var(--card);
+  --color-pink: var(--pink);
   --color-placeholder-bg: var(--placeholder-bg);
   --color-placeholder-border: var(--placeholder-border);
   --color-placeholder-text: var(--placeholder-text);
@@ -93,6 +53,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #6d5dfc;
+  color: #fff;
 }
 
 /* One consistent, high-visibility focus ring for keyboard users. */
@@ -139,7 +105,7 @@ summary::-webkit-details-marker {
 
 /* Form controls share one look in both themes. */
 .field {
-  @apply block w-full rounded-md border border-input-border bg-background px-3 py-2.5 text-base text-foreground placeholder:text-muted;
+  @apply block w-full rounded-lg border border-input-border bg-white/[0.03] px-3 py-2.5 text-base text-foreground placeholder:text-muted;
 }
 .field[aria-invalid="true"] {
   @apply border-danger;
@@ -156,4 +122,338 @@ input.field:focus-within {
   outline-width: 2px;
   outline-color: var(--focus-ring, var(--brand));
   outline-offset: 2px;
+}
+
+/* ---------- Premium utilities ---------- */
+
+/* In the components layer so Tailwind utilities (hidden, w-full, …) can override them. */
+@layer components {
+.text-gradient {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-gradient-brand {
+  background: var(--grad);
+}
+
+/* Faint grid with a radial fade, used behind heroes. */
+.bg-grid {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+}
+
+/* Glass card with a gradient hairline border. */
+.glass {
+  position: relative;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0.015));
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(12px);
+}
+.glow-border {
+  position: relative;
+  isolation: isolate;
+}
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(140deg, rgb(139 123 255 / 0.7), transparent 40%, transparent 60%, rgb(34 211 238 / 0.6));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  transition: opacity 0.4s;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+.btn-primary {
+  @apply relative inline-flex h-12 items-center justify-center gap-2 overflow-hidden rounded-full px-7 font-semibold text-white;
+  background: var(--grad);
+  background-size: 200% 100%;
+  box-shadow: 0 10px 40px -10px rgb(139 92 246 / 0.7);
+  transition: background-position 0.5s, transform 0.2s, box-shadow 0.3s;
+}
+.btn-primary:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 50px -10px rgb(34 211 238 / 0.6);
+}
+.btn-ghost {
+  @apply inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 font-semibold text-foreground;
+  transition: border-color 0.3s, background 0.3s;
+}
+.btn-ghost:hover {
+  border-color: rgb(255 255 255 / 0.4);
+  background: rgb(255 255 255 / 0.07);
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1 text-xs font-semibold tracking-[0.18em] text-brand-strong uppercase;
+}
+.eyebrow::before {
+  content: "";
+  @apply h-1.5 w-1.5 rounded-full;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+}
+
+/* Soft glowing blobs. */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .orb {
+    animation: orb-float 14s ease-in-out infinite alternate;
+  }
+  .gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+}
+@keyframes orb-float {
+  to {
+    transform: translate(40px, -30px) scale(1.15);
+  }
+}
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ---------- Scroll reveal ----------
+   Content is visible by default. Only when JavaScript is running (html.js)
+   does it start hidden and fade in as it enters the viewport. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--delay, 0ms);
+  }
+  html.js [data-reveal="left"] { transform: translateX(-40px); }
+  html.js [data-reveal="right"] { transform: translateX(40px); }
+  html.js [data-reveal="zoom"] { transform: scale(0.92); }
+  html.js [data-reveal][data-inview] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Marquee ---------- */
+.marquee {
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Hero rotating word ---------- */
+.word-rotator {
+  display: inline-grid;
+  vertical-align: bottom;
+  overflow: hidden;
+  height: 1.15em;
+}
+.word-rotator > span {
+  grid-area: 1 / 1;
+  line-height: 1.15;
+}
+.word-rotator > span:not(:first-child) {
+  visibility: hidden;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .word-rotator > span {
+    visibility: visible !important;
+    transform: translateY(110%);
+    animation: word-cycle 12s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+  }
+  .word-rotator > span:nth-child(2) { animation-delay: 3s; }
+  .word-rotator > span:nth-child(3) { animation-delay: 6s; }
+  .word-rotator > span:nth-child(4) { animation-delay: 9s; }
+}
+@keyframes word-cycle {
+  0% { transform: translateY(110%); }
+  4%, 25% { transform: translateY(0); }
+  29%, 100% { transform: translateY(-110%); }
+}
+
+/* ---------- Hero orbit ---------- */
+.orbit-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px dashed rgb(255 255 255 / 0.12);
+}
+.orbit-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: rotate(var(--a)) translate(var(--r)) rotate(calc(-1 * var(--a)));
+}
+@media (prefers-reduced-motion: no-preference) {
+  .orbit-spin {
+    animation: spin 40s linear infinite;
+  }
+  .orbit-spin .orbit-counter {
+    animation: spin 40s linear infinite reverse;
+  }
+  .pulse-ring {
+    animation: pulse-ring 3s ease-out infinite;
+  }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* ---------- Process line ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .process-line {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s;
+  }
+  html.js [data-inview] > .process-line {
+    transform: none;
+  }
+}
+
+/* Spotlight that follows the pointer on service cards (set by --mx / --my). */
+.spotlight {
+  background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), rgb(139 123 255 / 0.14), transparent 60%);
+}
+
+/* ---------- Scroll-linked animations ----------
+   Use native scroll-driven animations where the browser supports them
+   (Chrome, Edge, Opera). Elsewhere these simply do not run and the
+   IntersectionObserver reveals above still apply. */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 60;
+  background: var(--grad);
+  transform-origin: left;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+.hero-float {
+  animation: hero-float 7s ease-in-out infinite alternate;
+  animation-delay: var(--d, 0s);
+}
+@keyframes hero-float {
+  to { transform: translateY(-14px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-float { animation: none; }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-progress {
+      animation: grow-x linear both;
+      animation-timeline: scroll(root);
+    }
+    /* Hero content drifts up, shrinks and fades as the page scrolls away from it. */
+    .hero-parallax {
+      animation: hero-out linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 90vh;
+    }
+    .hero-parallax-slow {
+      animation: hero-out-slow linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 90vh;
+    }
+    /* Frames tilt up into place as they scroll into view. */
+    [data-scroll="tilt"] {
+      animation: tilt-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+    [data-scroll="zoom"] {
+      animation: zoom-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 35%;
+    }
+    /* Big outlined words slide sideways while scrolling past. */
+    [data-scroll="slide"] {
+      animation: slide-x linear both;
+      animation-timeline: view();
+    }
+    [data-scroll="slide-rev"] {
+      animation: slide-x-rev linear both;
+      animation-timeline: view();
+    }
+    .process-fill {
+      animation: grow-x linear both;
+      animation-timeline: view();
+      animation-range: cover 10% cover 60%;
+    }
+  }
+}
+@keyframes grow-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes hero-out {
+  to { transform: translateY(-120px) scale(0.92); opacity: 0.1; }
+}
+@keyframes hero-out-slow {
+  to { transform: translateY(80px) scale(0.9) rotate(-3deg); opacity: 0.2; }
+}
+@keyframes tilt-in {
+  from { transform: perspective(1200px) rotateX(28deg) scale(0.86) translateY(60px); opacity: 0.2; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes zoom-in {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes slide-x {
+  from { transform: translateX(10%); }
+  to { transform: translateX(-30%); }
+}
+@keyframes slide-x-rev {
+  from { transform: translateX(-30%); }
+  to { transform: translateX(10%); }
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(255 255 255 / 0.18);
 }
