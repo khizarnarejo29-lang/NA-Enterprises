@@ -410,6 +410,113 @@ function VideoDemo({ className }: Props) {
   );
 }
 
+/* 9. A SaaS dashboard: users sign in, charts fill, bookings stream into the table. */
+function SaasDemo({ className }: Props) {
+  const rows = [
+    ["s4", "Airport pickup", "Paid"],
+    ["s5", "City ride", "Paid"],
+    ["s6", "Airport drop-off", "New"],
+  ];
+  return (
+    <Frame label="app.yourplatform.com" className={className}>
+      <div className="s1 from-left absolute top-0 bottom-0 left-0 flex w-[17%] flex-col items-center gap-[1.1em] border-r border-white/10 bg-white/[0.03] pt-[1em]">
+        <span className="d-grad h-[1.6em] w-[1.6em] rounded-[0.4em]" />
+        {[0, 1, 2, 3].map((i) => (
+          <i key={i} className={`h-[1.1em] w-[1.1em] rounded-[0.3em] ${i === 0 ? "bg-[#3b82ff]" : "bg-white/15"}`} />
+        ))}
+      </div>
+      <div className="absolute top-[5%] right-[4%] bottom-[5%] left-[21%] flex flex-col gap-[4%]">
+        <div className="flex h-[20%] gap-[3%]">
+          {[
+            ["s2", "Users", ["128", "1,940", "3,512", "5,870"]],
+            ["s2", "Bookings", ["40", "610", "1,288", "2,406"]],
+            ["s3", "Revenue", ["0", "42K", "96K", "184K"]],
+          ].map(([s, label, nums]) => (
+            <div key={label as string} className={`${s} d-panel flex flex-1 flex-col justify-center px-[5%]`}>
+              <span className="text-[0.7em] text-white/55">{label as string}</span>
+              <span className="text-[1.25em] leading-tight font-black">
+                <span className="ticker">
+                  {(nums as string[]).map((n) => (
+                    <span key={n}>{n}</span>
+                  ))}
+                </span>
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="s3 d-panel relative flex h-[40%] items-end gap-[3%] px-[4%] pt-[6%] pb-[4%]">
+          <span className="absolute top-[6%] left-[4%] text-[0.7em] text-white/55">Monthly growth</span>
+          {[35, 48, 42, 60, 55, 72, 68, 85, 80, 96].map((h, i) => (
+            <i key={i} className="bar-grow d-grad flex-1 rounded-t-[0.25em]" style={v({ height: `${h * 0.75}%`, "--d": `${i * 0.06}s` })} />
+          ))}
+        </div>
+        <div className="d-panel flex flex-1 flex-col justify-center gap-[0.5em] px-[4%]">
+          {rows.map(([s, name, status]) => (
+            <div key={name} className={`${s} from-right flex items-center gap-[4%] text-[0.75em]`}>
+              <span className="h-[1.3em] w-[1.3em] shrink-0 rounded-full bg-gradient-to-br from-[#1d5cff] to-[#22d3ee]" />
+              <span className="flex-1">{name}</span>
+              <span className={`rounded-full px-[0.6em] text-[0.85em] font-semibold ${status === "New" ? "bg-[#22d3ee]/20 text-[#22d3ee]" : "bg-[#4ade80]/15 text-[#4ade80]"}`}>
+                {status}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <span className="s7 from-pop absolute top-[2%] right-[3%] rounded-full bg-[#4ade80] px-[0.7em] py-[0.15em] text-[0.7em] font-bold text-[#03210c]">
+        ● Live
+      </span>
+      <span className="s8 from-pop d-panel absolute right-[5%] bottom-[34%] px-[0.7em] py-[0.35em] text-[0.75em]">☁ Synced to cloud</span>
+    </Frame>
+  );
+}
+
+/* 10. An eBook takes shape: cover, chapters, pages turning, then export. */
+function EbookDemo({ className }: Props) {
+  return (
+    <Frame label="ebook-studio" className={className}>
+      <div className="book-scene absolute top-[10%] left-[8%] h-[78%] w-[44%]">
+        {/* Pages under the cover */}
+        <div className="absolute inset-0 rounded-r-[0.5em] bg-[#eef1ff] p-[10%] text-[#14152b] shadow-[0_1.5em_3em_-1em_rgb(0_0_0/0.8)]">
+          <p className="text-[0.8em] font-extrabold">Chapter 1</p>
+          <div className="mt-[8%] flex flex-col gap-[0.45em]">
+            {["94%", "88%", "92%", "70%", "90%", "84%", "60%"].map((w, i) => (
+              <i key={i} className="d-bar !h-[0.4em] !bg-[#14152b]/20" style={{ width: w }} />
+            ))}
+          </div>
+          <i className="d-grad mt-[10%] block h-[22%] w-full rounded-[0.3em] opacity-80" />
+        </div>
+        {/* Turning pages */}
+        <div className="page-turn absolute inset-0 rounded-r-[0.5em] border-l border-black/10 bg-[#f7f8ff]" style={v({ "--d": "0s" })} />
+        <div className="page-turn absolute inset-0 rounded-r-[0.5em] border-l border-black/10 bg-[#f7f8ff]" style={v({ "--d": "0.5s" })} />
+        {/* Cover */}
+        <div className="book-cover absolute inset-0 overflow-hidden rounded-r-[0.5em] bg-gradient-to-br from-[#0b2a8a] via-[#1d5cff] to-[#22d3ee] p-[10%] shadow-[inset_0.4em_0_0.6em_-0.2em_rgb(0_0_0/0.45)]">
+          <i className="s1 from-pop absolute -right-[20%] -bottom-[15%] h-[60%] w-[80%] rounded-full bg-white/20" />
+          <p className="s2 from-left text-[0.65em] tracking-[0.25em] text-white/80">THE COMPLETE</p>
+          <p className="s2 from-left mt-[6%] text-[1.5em] leading-[1.05] font-black">
+            Grow Your
+            <br />
+            Business
+          </p>
+          <p className="s3 from-left absolute bottom-[8%] left-[10%] text-[0.65em] font-semibold text-white/85">by Your Name</p>
+        </div>
+      </div>
+      <div className="absolute top-[10%] right-[5%] flex w-[38%] flex-col gap-[0.5em]">
+        <p className="s1 text-[0.7em] tracking-[0.15em] text-white/50">CONTENTS</p>
+        {["Introduction", "Getting started", "Marketing online", "Growing sales"].map((c, i) => (
+          <div key={c} className={`s${i + 2} from-right d-panel flex items-center gap-[0.6em] px-[0.6em] py-[0.35em] text-[0.75em]`}>
+            <span className="text-gradient font-black">{String(i + 1).padStart(2, "0")}</span>
+            {c}
+          </div>
+        ))}
+        <div className="mt-[0.4em] flex gap-[0.5em]">
+          <span className="s7 from-pop rounded-full bg-[#4ade80] px-[0.7em] py-[0.2em] text-[0.7em] font-bold text-[#03210c]">PDF ✓</span>
+          <span className="s8 from-pop rounded-full bg-[#22d3ee] px-[0.7em] py-[0.2em] text-[0.7em] font-bold text-[#032430]">EPUB ✓</span>
+        </div>
+      </div>
+    </Frame>
+  );
+}
+
 const DEMOS: Record<string, (p: Props) => ReactNode> = {
   "website-development": WebsiteDemo,
   "logo-design": LogoDemo,
@@ -419,6 +526,8 @@ const DEMOS: Record<string, (p: Props) => ReactNode> = {
   "content-writing": ContentDemo,
   "graphic-design": GraphicDemo,
   "video-editing-animation": VideoDemo,
+  "saas-development": SaasDemo,
+  "ebook-writing-design": EbookDemo,
 };
 
 export function ServiceDemo({ slug, className }: { slug: string; className?: string }) {

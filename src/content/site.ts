@@ -3,8 +3,8 @@
  *
  * Confirmed by the owner: the business name (NA Enterprises), the domain
  * (naenterprises.site), the business email (info@naenterprises.site), the
- * phone (0313 2759207), address (DHA, Karachi, Pakistan), and the eight services
- * listed below (2026-11-18). Nothing else has been confirmed.
+ * phone (0313 2759207), address (DHA, Karachi, Pakistan), the ten services
+ * listed below, and the partnership with Galaxy Airport Taxi (2026-11-18). Nothing else has been confirmed.
  *
  * Markers:
  *   PLACEHOLDER: required before launch. Shown on the site as a labelled
@@ -32,7 +32,7 @@ export const siteConfig: SiteConfig = {
   locale: "en",
   tagline: "Digital marketing and design services for your business.", // OPTIONAL: replace with the company's own slogan if it has one
   description:
-    "NA Enterprises is a digital services agency in Karachi offering website development, logo and business card design, social media marketing, SEO, content writing, graphic design and video editing.",
+    "NA Enterprises is a digital services agency in Karachi offering website development, SaaS (software as a service), logo and business card design, social media marketing, SEO, content writing, eBooks, graphic design and video editing.",
   preview: true, // PLACEHOLDER: set to false once every placeholder is replaced
   contact: {
     email: "info@naenterprises.site", // Confirmed by the owner (2026-10-08)
@@ -74,8 +74,9 @@ export type Service = {
   includes: string[];
 };
 
-// Confirmed by the owner (2026-11-18): website development, logo design, business card design,
-// social media marketing, SEO, content writing, graphic design, and video editing & animation.
+// Confirmed by the owner (2026-11-18): website development, SaaS, logo design, business card design,
+// social media marketing, SEO, content writing, eBook writing & design, graphic design, and
+// video editing & animation.
 // Each entry gets its own page at /services/<slug>/, an animated preview, and a sitemap entry.
 // `summary` and `description` explain the discipline in general terms. `includes` lists the
 // typical deliverables of each service. REVIEW: owner to confirm or edit each `includes` list.
@@ -97,6 +98,25 @@ export const services: Service[] = [
       "Contact forms, WhatsApp and social media links",
       "Speed optimisation and basic on-page SEO",
       "Domain, hosting and launch support",
+    ],
+  },
+  {
+    slug: "saas-development",
+    title: "SaaS (Software as a Service)",
+    short: "SaaS",
+    summary: "Custom cloud software your customers use online, with accounts, dashboards and subscriptions, built and run for you.",
+    placeholder: false,
+    description: [
+      "Software as a service (SaaS) is software that runs in the cloud and is used through a web browser or app, usually on a subscription. There is nothing for your customers to install, and everyone always has the latest version.",
+      "We plan, build and run SaaS platforms for businesses: from booking and management systems to customer portals and admin dashboards. Our partner Galaxy Airport Taxi runs on a SaaS platform from NA Enterprises.",
+    ],
+    includes: [
+      "Planning your software around how your business works",
+      "Web app with user accounts and secure login",
+      "Admin dashboard and reports",
+      "Booking, order or customer management features",
+      "Subscriptions and online payments",
+      "Cloud hosting, updates and ongoing support",
     ],
   },
   {
@@ -191,6 +211,25 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: "ebook-writing-design",
+    title: "eBook Writing & Design",
+    short: "eBooks",
+    summary: "Professionally written and beautifully designed eBooks that share your knowledge and grow your brand.",
+    placeholder: false,
+    description: [
+      "An eBook is a digital book people read on a phone, tablet, e-reader or computer. Businesses use eBooks as guides for their customers, as free downloads that bring in new leads, or as products to sell.",
+      "eBook writing and design covers planning the chapters, writing and editing the text, designing the cover and pages, and preparing the files for download or for online stores.",
+    ],
+    includes: [
+      "Topic research and chapter outline",
+      "eBook writing and editing",
+      "Eye-catching cover design",
+      "Page layout with images and charts",
+      "Files in PDF and EPUB formats",
+      "Ready for your website or online stores",
+    ],
+  },
+  {
     slug: "graphic-design",
     title: "Graphic Design",
     short: "Graphic Design",
@@ -247,16 +286,34 @@ export const company = {
   founderMessage: "", // OPTIONAL: message from the founder / director (hidden while empty)
 };
 
-// OPTIONAL (hidden while empty): add clients / partners only with their permission to show their name or logo.
+// OPTIONAL (hidden while empty): add clients only with their permission to show their name or logo.
 export const clients: { name: string; logo?: string }[] = [];
+
+export type Partner = { name: string; role: string; text: string; service: string };
+// Confirmed by the owner (2026-11-18). `service` is the slug of the service we provide to the partner.
+export const partners: Partner[] = [
+  {
+    name: "Galaxy Airport Taxi",
+    role: "Official partner",
+    text: "Galaxy Airport Taxi is our partner. Their business runs on a SaaS (software as a service) platform built and run by NA Enterprises.",
+    service: "saas-development",
+  },
+];
 
 // OPTIONAL (hidden while empty): add only awards and certifications that can be verified.
 export const awards: { title: string; issuer: string; year: string }[] = [];
 
 export type Project = { title: string; client: string; category: string; summary: string; result?: string };
-// PLACEHOLDER: add completed projects. Only publish results the client has agreed to share.
+// Add completed projects. Only publish results the client has agreed to share.
 // While empty, /portfolio/ shows "Portfolio coming soon" and the home page hides the section.
-export const projects: Project[] = [];
+export const projects: Project[] = [
+  {
+    title: "SaaS platform for Galaxy Airport Taxi",
+    client: "Galaxy Airport Taxi (partner)",
+    category: "SaaS",
+    summary: "A software-as-a-service platform that NA Enterprises built and runs for our partner Galaxy Airport Taxi. It is live and in use today.",
+  },
+];
 
 export type Testimonial = { quote: string; name: string; role: string };
 // OPTIONAL (hidden while empty): add genuine client reviews, with the client's permission.
