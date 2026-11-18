@@ -11,7 +11,7 @@ export function ProcessSteps() {
       <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {process.map((step, i) => (
           <li key={step.title} data-reveal style={{ "--delay": `${i * 140}ms` } as CSSProperties} className="relative text-center">
-            <span className="bg-gradient-brand relative mx-auto flex h-16 w-16 items-center justify-center rounded-2xl text-xl font-black text-white shadow-[0_0_40px_-8px_rgb(139_92_246)]">
+            <span className="bg-gradient-brand relative mx-auto flex h-16 w-16 items-center justify-center rounded-2xl text-xl font-black text-white shadow-[0_0_40px_-8px_rgb(10_108_255)]">
               {String(i + 1).padStart(2, "0")}
             </span>
             <h3 className="mt-6 text-xl font-semibold">{step.title}</h3>

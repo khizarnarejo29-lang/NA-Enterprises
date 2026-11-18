@@ -10,7 +10,7 @@ export function PageHeader({ title, intro, crumbs, children }: { title: string; 
   return (
     <section className="relative isolate overflow-hidden border-b border-border">
       <div className="bg-grid absolute inset-0 -z-10" />
-      <div className="orb -z-10 -top-48 left-1/4 h-[28rem] w-[28rem] bg-[#6d5dfc]" />
+      <div className="orb -z-10 -top-48 left-1/4 h-[28rem] w-[28rem] bg-[#1d5cff]" />
       <div className="orb -z-10 -top-32 right-0 h-[22rem] w-[22rem] bg-[#0891b2]" style={{ animationDelay: "-5s" }} />
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24" data-reveal>
         <nav aria-label="Breadcrumb" className="text-sm text-muted">

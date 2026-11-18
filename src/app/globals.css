@@ -14,12 +14,12 @@
   --card: #0d1024;
   --border: rgb(255 255 255 / 0.09);
   --input-border: #4b5275;
-  --brand: #8b7bff;
-  --brand-strong: #a99cff;
+  --brand: #3b82ff;
+  --brand-strong: #7ab8ff;
   --brand-foreground: #ffffff;
   --accent: #22d3ee;
   --pink: #f472b6;
-  --grad: linear-gradient(120deg, #6d5dfc 0%, #a855f7 45%, #22d3ee 100%);
+  --grad: linear-gradient(120deg, #1d5cff 0%, #0a84ff 45%, #22d3ee 100%);
   --placeholder-bg: #221704;
   --placeholder-border: #f59e0b;
   --placeholder-text: #fcd34d;
@@ -57,7 +57,7 @@ body {
 }
 
 ::selection {
-  background: #6d5dfc;
+  background: #1d5cff;
   color: #fff;
 }
 
@@ -167,7 +167,7 @@ input.field:focus-within {
   z-index: -1;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(140deg, rgb(139 123 255 / 0.7), transparent 40%, transparent 60%, rgb(34 211 238 / 0.6));
+  background: linear-gradient(140deg, rgb(59 130 255 / 0.7), transparent 40%, transparent 60%, rgb(34 211 238 / 0.6));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -182,7 +182,7 @@ input.field:focus-within {
   @apply relative inline-flex h-12 items-center justify-center gap-2 overflow-hidden rounded-full px-7 font-semibold text-white;
   background: var(--grad);
   background-size: 200% 100%;
-  box-shadow: 0 10px 40px -10px rgb(139 92 246 / 0.7);
+  box-shadow: 0 10px 40px -10px rgb(10 108 255 / 0.7);
   transition: background-position 0.5s, transform 0.2s, box-shadow 0.3s;
 }
 .btn-primary:hover {
@@ -354,7 +354,7 @@ input.field:focus-within {
 
 /* Spotlight that follows the pointer on service cards (set by --mx / --my). */
 .spotlight {
-  background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), rgb(139 123 255 / 0.14), transparent 60%);
+  background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), rgb(59 130 255 / 0.14), transparent 60%);
 }
 
 /* ---------- Scroll-linked animations ----------
