@@ -33,6 +33,7 @@ export const has = {
   plans: plans.length > 0,
   projects: projects.length > 0,
   leadership: company.leadership.length > 0 || company.founderMessage !== "",
+  missionVision: siteConfig.preview || company.mission !== "" || company.vision !== "" || company.goals.length > 0,
 };
 const arrowLink = "mt-4 inline-flex items-center gap-1 font-semibold text-brand hover:underline";
 
@@ -85,9 +86,9 @@ export function CompanyFacts() {
     { label: "Founded", value: company.founded },
     { label: "Based in", value: company.location },
     { label: "Services", value: services.some((s) => s.placeholder) ? "" : String(services.length) },
-  ];
+  ].filter((f) => f.value || siteConfig.preview);
   return (
-    <dl className="grid gap-4 sm:grid-cols-3">
+    <dl className={`grid gap-4 ${facts.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
       {facts.map((f) => (
         <div key={f.label} className={card}>
           <dt className="text-sm font-semibold text-muted">{f.label}</dt>
@@ -105,6 +106,9 @@ export function CompanyFacts() {
 }
 
 export function CompanyOverview() {
+  if (!company.overview && !siteConfig.preview) {
+    return <p className="max-w-3xl text-lg leading-8 text-muted">{siteConfig.description}</p>;
+  }
   return company.overview ? (
     <p className="max-w-3xl text-lg leading-8 text-muted">{company.overview}</p>
   ) : (

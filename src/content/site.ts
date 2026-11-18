@@ -3,7 +3,7 @@
  *
  * Confirmed by the owner: the business name (NA Enterprises), the domain
  * (naenterprises.site), the business email (info@naenterprises.site), the
- * phone (0313 2759207), address (DHA, Karachi, Pakistan), the ten services
+ * phone (0313 2759207), address (Karachi, Pakistan), the ten services
  * listed below, and the partnership with Galaxy Airport Taxi (2026-11-18). Nothing else has been confirmed.
  *
  * Markers:
@@ -33,11 +33,11 @@ export const siteConfig: SiteConfig = {
   tagline: "Digital marketing and design services for your business.", // OPTIONAL: replace with the company's own slogan if it has one
   description:
     "NA Enterprises is a digital services agency in Karachi offering website development, SaaS (software as a service), logo and business card design, social media marketing, SEO, content writing, eBooks, graphic design and video editing.",
-  preview: true, // PLACEHOLDER: set to false once every placeholder is replaced
+  preview: false, // Owner asked to remove the preview banner (2026-11-18). Unfilled placeholders are hidden while false.
   contact: {
     email: "info@naenterprises.site", // Confirmed by the owner (2026-10-08)
     phone: "0313 2759207", // Confirmed by the owner (2026-10-08). Displayed as given; linked as tel:+923132759207.
-    address: "DHA, Karachi, Pakistan", // Confirmed by the owner (2026-10-08). Display exactly as given; no street address.
+    address: "Karachi, Pakistan", // Confirmed by the owner (2026-11-18). Display exactly as given; no street address.
     hours: "", // OPTIONAL: e.g. "Monday to Friday, 9:00 to 17:00" (hidden while empty)
   },
   legal: {
