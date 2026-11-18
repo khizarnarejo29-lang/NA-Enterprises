@@ -3,8 +3,8 @@
  *
  * Confirmed by the owner: the business name (NA Enterprises), the domain
  * (naenterprises.site), the business email (info@naenterprises.site), the
- * phone (0313 2759207), address (DHA, Karachi, Pakistan), and the four services
- * listed below. Nothing else has been confirmed.
+ * phone (0313 2759207), address (DHA, Karachi, Pakistan), and the eight services
+ * listed below (2026-11-18). Nothing else has been confirmed.
  *
  * Markers:
  *   PLACEHOLDER: required before launch. Shown on the site as a labelled
@@ -30,10 +30,9 @@ export const siteConfig: SiteConfig = {
   name: "NA Enterprises",
   url: "https://naenterprises.site",
   locale: "en",
-  // Plain description of the confirmed services, not a marketing claim.
   tagline: "Digital marketing and design services for your business.", // OPTIONAL: replace with the company's own slogan if it has one
   description:
-    "NA Enterprises offers search engine optimization (SEO), social media marketing, content writing and logo design.",
+    "NA Enterprises is a digital services agency in Karachi offering website development, logo and business card design, social media marketing, SEO, content writing, graphic design and video editing.",
   preview: true, // PLACEHOLDER: set to false once every placeholder is replaced
   contact: {
     email: "info@naenterprises.site", // Confirmed by the owner (2026-10-08)
@@ -66,6 +65,8 @@ export const legalNav = [
 export type Service = {
   slug: string;
   title: string;
+  /** Short name for menus and chips. */
+  short: string;
   summary: string;
   /** True until the service has been confirmed by the business. */
   placeholder: boolean;
@@ -73,51 +74,164 @@ export type Service = {
   includes: string[];
 };
 
-// Confirmed by the owner (2026-10-08). Do not add services that have not been confirmed.
-// Each entry gets its own page at /services/<slug>/ and a sitemap entry.
-// `summary` and `description` explain what the discipline is in general terms;
-// they make no claims about NA Enterprises' process, pricing or results.
+// Confirmed by the owner (2026-11-18): website development, logo design, business card design,
+// social media marketing, SEO, content writing, graphic design, and video editing & animation.
+// Each entry gets its own page at /services/<slug>/, an animated preview, and a sitemap entry.
+// `summary` and `description` explain the discipline in general terms. `includes` lists the
+// typical deliverables of each service. REVIEW: owner to confirm or edit each `includes` list.
 export const services: Service[] = [
+  {
+    slug: "website-development",
+    title: "Website Development",
+    short: "Websites",
+    summary: "Fast, modern and mobile-friendly websites that look great and turn visitors into customers.",
+    placeholder: false,
+    description: [
+      "Your website is often the first place a customer meets your business. Website development covers planning the pages, designing the look, and building a site that loads quickly and works on every screen.",
+      "From a simple business website to a full online store, the goal is the same: a site that clearly explains what you offer and makes it easy for visitors to get in touch or buy.",
+    ],
+    includes: [
+      "Custom website design matched to your brand",
+      "Responsive layout for mobile, tablet and desktop",
+      "Business websites, landing pages and online stores",
+      "Contact forms, WhatsApp and social media links",
+      "Speed optimisation and basic on-page SEO",
+      "Domain, hosting and launch support",
+    ],
+  },
+  {
+    slug: "logo-design",
+    title: "Logo Design",
+    short: "Logos",
+    summary: "A distinctive logo that gives your business a recognisable visual identity.",
+    placeholder: false,
+    description: [
+      "Logo design is the creation of the mark or wordmark that represents a business. A good logo is simple, memorable and works across a website, social media and print.",
+      "A logo is usually delivered together with a colour palette and font choices, so your brand looks consistent wherever it appears.",
+    ],
+    includes: [
+      "Several initial logo concepts to choose from",
+      "Revisions on your chosen concept",
+      "Colour palette and font recommendations",
+      "Versions for light and dark backgrounds",
+      "Final files in PNG, JPG, SVG and PDF",
+      "Sizes ready for social media profiles",
+    ],
+  },
+  {
+    slug: "business-card-design",
+    title: "Business Card & Stationery Design",
+    short: "Business Cards",
+    summary: "Professional business cards, letterheads and stationery that leave a lasting impression.",
+    placeholder: false,
+    description: [
+      "A business card is often the one thing a potential client takes away from a meeting. Business card and stationery design gives your printed materials a consistent, professional look that matches your brand.",
+    ],
+    includes: [
+      "Front and back business card design",
+      "Letterhead and envelope design",
+      "Email signature design",
+      "Designs that follow your logo and brand colours",
+      "Print-ready files with bleed and crop marks",
+    ],
+  },
+  {
+    slug: "social-media-marketing",
+    title: "Social Media Marketing",
+    short: "Social Media",
+    summary: "Using social media platforms to reach your audience, share your message and build your brand.",
+    placeholder: false,
+    description: [
+      "Social media marketing means planning and publishing content on social media to connect with customers and promote a business.",
+      "It typically covers platforms such as Facebook, Instagram, TikTok and LinkedIn, and can include both regular posting and paid advertising.",
+    ],
+    includes: [
+      "Social media page setup and optimisation",
+      "Monthly content calendar",
+      "Post and story designs",
+      "Short video and reel ideas",
+      "Paid ad campaigns on Facebook and Instagram",
+      "Monthly performance report",
+    ],
+  },
   {
     slug: "search-engine-optimization",
     title: "Search Engine Optimization (SEO)",
+    short: "SEO",
     summary: "Improving how your website appears in search results, so people looking for what you offer can find you.",
     placeholder: false,
     description: [
       "Search engine optimization is the work of making a website easier for search engines such as Google to understand and show to the right people. It typically covers the site's content, structure and technical set-up.",
     ],
-    includes: [], // PLACEHOLDER: what NA Enterprises' SEO service actually includes
-  },
-  {
-    slug: "social-media-marketing",
-    title: "Social Media Marketing",
-    summary: "Using social media platforms to reach your audience, share your message and build your brand.",
-    placeholder: false,
-    description: [
-      "Social media marketing means planning and publishing content on social media to connect with customers and promote a business.",
+    includes: [
+      "Website SEO audit",
+      "Keyword research for your business",
+      "On-page optimisation of titles, headings and content",
+      "Technical SEO and site speed improvements",
+      "Google Business Profile setup for local search",
+      "Monthly ranking and traffic report",
     ],
-    includes: [], // PLACEHOLDER: what NA Enterprises' social media marketing service actually includes
   },
   {
     slug: "content-writing",
     title: "Content Writing",
+    short: "Content",
     summary: "Clear, purposeful written content for your website, marketing and communications.",
     placeholder: false,
     description: [
       "Content writing is the creation of written material for a specific audience and purpose.",
+      "Good content explains what you do in plain language, answers your customers' questions and helps your pages appear in search results.",
     ],
-    includes: [], // PLACEHOLDER: what NA Enterprises' content writing service actually includes
+    includes: [
+      "Website page content",
+      "Blog posts and articles",
+      "SEO-friendly product and service descriptions",
+      "Social media captions",
+      "Company profiles and brochures",
+    ],
   },
   {
-    slug: "logo-design",
-    title: "Logo Design",
-    summary: "A distinctive logo that gives your business a recognisable visual identity.",
+    slug: "graphic-design",
+    title: "Graphic Design",
+    short: "Graphic Design",
+    summary: "Eye-catching flyers, banners, posters and brochures that put your brand in front of people.",
     placeholder: false,
     description: [
-      "Logo design is the creation of the mark or wordmark that represents a business. A good logo is simple, memorable and works across a website, social media and print.",
+      "Graphic design turns your message into visuals people notice and remember. It covers everything from social media posts and online banners to printed flyers, posters and brochures.",
     ],
-    includes: [], // PLACEHOLDER: what NA Enterprises' logo design service actually includes
+    includes: [
+      "Flyers, posters and brochures",
+      "Social media post and ad designs",
+      "Website banners and display ads",
+      "Packaging and label design",
+      "Print-ready and web-ready files",
+    ],
   },
+  {
+    slug: "video-editing-animation",
+    title: "Video Editing & Animation",
+    short: "Video & Animation",
+    summary: "Engaging videos, reels and motion graphics that tell your story and grab attention.",
+    placeholder: false,
+    description: [
+      "Video is one of the most effective ways to explain a product or service. Video editing and animation covers cutting and polishing your footage, adding music and captions, and creating animated graphics.",
+    ],
+    includes: [
+      "Promotional and product videos",
+      "Reels and short videos for social media",
+      "Logo animation and intros",
+      "Animated explainer videos",
+      "Subtitles, music and colour correction",
+    ],
+  },
+];
+
+/** How a project usually runs. General steps, not a promise of timings. REVIEW: owner to confirm. */
+export const process = [
+  { title: "Discuss", text: "Tell us about your business, your goals and what you need." },
+  { title: "Plan & design", text: "We plan the work and share designs for your feedback." },
+  { title: "Build & refine", text: "We build, test and refine until you are happy with it." },
+  { title: "Launch & grow", text: "We hand over the final work and help you take it live." },
 ];
 
 /** Company facts. Empty values render as labelled placeholders. */

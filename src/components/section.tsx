@@ -7,27 +7,34 @@ export function Section({
   title,
   intro,
   tone = "default",
+  align = "left",
   children,
 }: {
   id?: string;
   eyebrow?: string;
-  title: string;
+  title: ReactNode;
   intro?: ReactNode;
   tone?: "default" | "surface";
+  align?: "left" | "center";
   children: ReactNode;
 }) {
   const headingId = id ? `${id}-heading` : undefined;
+  const center = align === "center";
   return (
-    <section id={id} aria-labelledby={headingId} className={tone === "surface" ? "bg-surface" : undefined}>
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <div className="max-w-2xl">
-          {eyebrow && <p className="text-sm font-semibold tracking-wide text-brand uppercase">{eyebrow}</p>}
-          <h2 id={headingId} className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
+    <section
+      id={id}
+      aria-labelledby={headingId}
+      className={`relative ${tone === "surface" ? "border-y border-border bg-surface" : ""}`}
+    >
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28">
+        <div className={`max-w-3xl ${center ? "mx-auto text-center" : ""}`} data-reveal>
+          {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+          <h2 id={headingId} className="mt-5 text-3xl font-bold tracking-tight text-balance sm:text-5xl">
             {title}
           </h2>
-          {intro && <p className="mt-3 text-lg text-muted">{intro}</p>}
+          {intro && <p className="mt-5 text-lg leading-8 text-muted">{intro}</p>}
         </div>
-        <div className="mt-10">{children}</div>
+        <div className="mt-14">{children}</div>
       </div>
     </section>
   );

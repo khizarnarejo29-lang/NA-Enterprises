@@ -40,9 +40,8 @@ export default function PrivacyPolicyPage() {
 
         <h2>Cookies and local storage</h2>
         <p>
-          This website does not set advertising or tracking cookies. If you choose a light or dark colour theme, that
-          choice is saved in your browser&apos;s local storage on your own device and is never sent to us. If we add
-          analytics or other tools that use cookies in the future, we will update this policy first.
+          This website does not set advertising or tracking cookies and does not use your browser&apos;s local storage.
+          If we add analytics or other tools that use cookies in the future, we will update this policy first.
         </p>
 
         <h2>Contact form</h2>

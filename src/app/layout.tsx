@@ -4,9 +4,10 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { JsonLd } from "@/components/json-ld";
 import { internationalPhone } from "@/lib/contact";
-import { themeInitScript } from "@/lib/theme";
+import { MotionObserver } from "@/components/motion-observer";
 import { siteConfig } from "@/content/site";
 import "./globals.css";
+import "./demos.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +31,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b1120" },
-  ],
+  themeColor: "#05060f",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -42,11 +40,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang={siteConfig.locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      // The theme script may set data-theme before React hydrates.
+      // The inline script adds the "js" class before React hydrates.
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {/* Marks that JavaScript runs, so scroll-reveal styles only hide content when they can show it again. */}
+        <script dangerouslySetInnerHTML={{ __html: 'document.documentElement.classList.add("js")' }} />
       </head>
       <body className="flex min-h-full flex-col font-sans">
         <a
@@ -61,11 +60,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {siteConfig.name}. Items marked &ldquo;Placeholder&rdquo; are not real information.
           </aside>
         )}
+        <div className="scroll-progress" aria-hidden="true" />
         <SiteHeader />
-        <main id="main" className="flex-1">
+        <main id="main" className="flex-1 overflow-x-clip">
           {children}
         </main>
         <SiteFooter />
+        <MotionObserver />
         <JsonLd
           data={{
             "@context": "https://schema.org",

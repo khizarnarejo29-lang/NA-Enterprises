@@ -20,8 +20,9 @@ import {
 } from "@/content/site";
 import { mailtoHref, telHref } from "@/lib/contact";
 import { Placeholder, PlaceholderBadge } from "./placeholder";
+import { ServiceIcon } from "./service-icon";
 
-const card = "rounded-xl border border-border bg-background p-6";
+const card = "glass p-6";
 
 /** Which OPTIONAL sections have content. Pages hide a section entirely when false. */
 export const has = {
@@ -39,10 +40,8 @@ export function ServiceCard({ service, headingLevel = 3 }: { service: Service; h
   const H = headingLevel === 2 ? "h2" : "h3";
   return (
     <li className={`${card} flex flex-col`}>
-      <span aria-hidden="true" className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-surface text-brand">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M4 7h16M4 12h16M4 17h10" />
-        </svg>
+      <span aria-hidden="true" className="bg-gradient-brand mb-4 flex h-11 w-11 items-center justify-center rounded-xl text-white">
+        <ServiceIcon slug={service.slug} size={22} />
       </span>
       <div className="flex flex-wrap items-center gap-2">
         <H className="text-lg font-semibold">{service.title}</H>
@@ -243,7 +242,7 @@ export function PricingPlans() {
         </p>
         <Link
           href="/contact/"
-          className="mt-5 inline-flex h-11 items-center rounded-md bg-brand px-5 font-semibold text-brand-foreground hover:bg-brand-strong"
+          className="btn-primary mt-6"
         >
           Request a quote
         </Link>
@@ -265,7 +264,7 @@ export function PricingPlans() {
               </li>
             ))}
           </ul>
-          <Link href="/contact/" className="mt-6 inline-flex h-11 items-center justify-center rounded-md bg-brand font-semibold text-brand-foreground">
+          <Link href="/contact/" className="btn-primary mt-6">
             Request a quote<span className="sr-only"> for {p.name}</span>
           </Link>
         </li>
@@ -276,12 +275,12 @@ export function PricingPlans() {
 
 export function FaqList({ limit }: { limit?: number }) {
   return (
-    <div className="divide-y divide-border rounded-xl border border-border bg-background">
+    <div className="glass divide-y divide-border">
       {faqs.slice(0, limit).map((f) => (
         <details key={f.q} className="group p-5">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">
             {f.q}
-            <span aria-hidden="true" className="text-xl text-muted transition group-open:rotate-45">
+            <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-xl text-brand-strong transition duration-300 group-open:rotate-45">
               +
             </span>
           </summary>

@@ -1,8 +1,9 @@
 import { CtaBand } from "@/components/cta-band";
 import { PageHeader } from "@/components/page-header";
-import { Placeholder } from "@/components/placeholder";
+import { ProcessSteps } from "@/components/process-steps";
 import { Section } from "@/components/section";
-import { ServiceCard, WhyChooseUs, has } from "@/components/sections";
+import { ServiceShowcase, ServiceTiles } from "@/components/service-showcase";
+import { WhyChooseUs, has } from "@/components/sections";
 import { services, siteConfig } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -13,29 +14,24 @@ export const metadata = pageMetadata({
 });
 
 export default function ServicesPage() {
-  const unconfirmed = services.some((s) => s.placeholder);
   return (
     <>
       <PageHeader
-        title="Our services"
-        intro="Choose a service to see what it includes and how to get started."
+        title="Digital services that grow your business"
+        intro="Websites, branding, marketing and content: everything your business needs to look professional and get found online."
         crumbs={[{ href: "/services/", label: "Services" }]}
       />
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        {unconfirmed && (
-          <Placeholder title="Services not yet confirmed" className="mb-8">
-            The services below are layout placeholders. NA Enterprises has not yet confirmed which services it offers.
-            Replace them in <code>services</code> in site.ts.
-          </Placeholder>
-        )}
-        <ul className="grid gap-6 sm:grid-cols-2">
-          {services.map((s) => (
-            <ServiceCard key={s.slug} service={s} headingLevel={2} />
-          ))}
-        </ul>
+      <section aria-label="All services" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <ServiceTiles />
       </section>
+      <section aria-label="Services in detail" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
+        <ServiceShowcase headingLevel={2} />
+      </section>
+      <Section id="process" tone="surface" eyebrow="How we work" align="center" title="A simple process, start to finish">
+        <ProcessSteps />
+      </Section>
       {has.whyChooseUs && (
-        <Section id="why-us" tone="surface" eyebrow="Why us" title={`Why choose ${siteConfig.name}`}>
+        <Section id="why-us" eyebrow="Why us" title={`Why choose ${siteConfig.name}`}>
           <WhyChooseUs />
         </Section>
       )}
