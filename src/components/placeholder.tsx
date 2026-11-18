@@ -1,3 +1,4 @@
+import { siteConfig } from "@/content/site";
 import type { ReactNode } from "react";
 
 /**
@@ -14,6 +15,8 @@ export function Placeholder({
   children?: ReactNode;
   className?: string;
 }) {
+  // On the live site (preview off) unconfirmed content is simply left out.
+  if (!siteConfig.preview) return null;
   return (
     <div
       className={`rounded-xl border-2 border-dashed border-placeholder-border bg-placeholder-bg p-5 text-placeholder-text ${className}`}
@@ -31,6 +34,7 @@ export function Placeholder({
 
 /** Inline badge for items (e.g. a service card) that are themselves placeholders. */
 export function PlaceholderBadge() {
+  if (!siteConfig.preview) return null;
   return (
     <span className="inline-block rounded bg-placeholder-border px-2 py-0.5 text-xs font-bold tracking-wide text-placeholder-bg uppercase">
       Placeholder

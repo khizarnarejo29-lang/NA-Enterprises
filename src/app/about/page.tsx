@@ -29,9 +29,11 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section id="mission" tone="surface" eyebrow="Purpose" title={company.goals.length ? "Mission, vision and goals" : "Mission and vision"}>
-        <MissionVision />
-      </Section>
+      {has.missionVision && (
+        <Section id="mission" tone="surface" eyebrow="Purpose" title={company.goals.length ? "Mission, vision and goals" : "Mission and vision"}>
+          <MissionVision />
+        </Section>
+      )}
 
       {has.leadership && (
       <Section id="leadership" eyebrow="Leadership" title="Leadership team">
