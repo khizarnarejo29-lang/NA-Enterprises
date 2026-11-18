@@ -13,7 +13,7 @@ export function Hero() {
       <div className="orb -z-10 -top-40 -left-32 h-[36rem] w-[36rem] bg-[#6d5dfc]" />
       <div className="orb -z-10 top-40 -right-40 h-[30rem] w-[30rem] bg-[#0891b2]" style={{ animationDelay: "-6s" }} />
 
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 pt-14 pb-24 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:pt-20 lg:pb-32">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pt-8 pb-24 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pt-20 lg:pb-32">
         <div className="hero-parallax">
           <p data-reveal className="eyebrow">Digital agency · Karachi, Pakistan</p>
           <h1 data-reveal style={{ "--delay": "100ms" } as CSSProperties} className="mt-6 text-[2.6rem] leading-[1.05] font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
@@ -66,14 +66,14 @@ export function Hero() {
 /** Orbit of every service around the brand mark, with live service demos floating in front. */
 function HeroVisual() {
   return (
-    <div className="hero-parallax-slow relative mx-auto aspect-square w-full max-w-[36rem]" aria-hidden="true">
+    <div className="hero-parallax-slow relative order-first mx-auto aspect-square w-[88%] max-w-[36rem] sm:w-full lg:order-none" aria-hidden="true">
       <div data-reveal="zoom" className="absolute inset-0">
         {/* Orbits */}
         <div className="orbit-ring" />
         <div className="orbit-ring inset-[16%]! opacity-60" />
         <div className="orbit-spin absolute inset-0">
           {services.map((s, i) => (
-            <div key={s.slug} className="orbit-item" style={{ "--a": `${(360 / services.length) * i}deg`, "--r": "min(18rem, 46vw)" } as CSSProperties}>
+            <div key={s.slug} className="orbit-item" style={{ "--a": `${(360 / services.length) * i}deg`, "--r": "min(18rem, 39vw)" } as CSSProperties}>
               <div className="orbit-counter -translate-x-1/2 -translate-y-1/2">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/15 bg-[#0d1024]/90 text-brand-strong shadow-[0_0_30px_-6px_rgb(139_123_255/0.8)] backdrop-blur sm:h-14 sm:w-14">
                   <ServiceIcon slug={s.slug} size={24} />

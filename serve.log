@@ -1,0 +1,82 @@
+ UPDATE  The latest version of `serve` is 14.2.8
+ INFO  Accepting connections at http://0.0.0.0:4000
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 31 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/media/22a5144ee8d83bca-s.p.woff2
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 2 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/css/b5ac12979c541929.css
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/media/7d4881bb7e1bf84d-s.p.woff2
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 2 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 3 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/chunks/webpack-a480119b9b32f4f7.js
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 4 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/chunks/4bd1b696-c7408084347438ae.js
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 2 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/chunks/794-96ab5d7caefc5d69.js
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/chunks/main-app-73627c43534390db.js
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/chunks/500-fc3b64d9ff4a32a7.js
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/chunks/app/layout-a16d3e905fd328f0.js
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/chunks/934-42c154d18091dd8c.js
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 6 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 6 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 5 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 10 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 5 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/chunks/app/page-498837d3088dfa55.js
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 5 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 HEAD /
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 HEAD /contact/
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 304 in 2 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 1 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /__next._tree.txt?_rsc=5CB68i4pnAekjehf
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /contact/__next._tree.txt?_rsc=5CB68i4pnAekjehf
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 2 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 2 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /__next._index.txt?_rsc=yIp22O3xgPPxC28X
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /__next.__PAGE__.txt?_rsc=8nTjltbQWvg6NcbE
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /contact/__next.contact.__PAGE__.txt?_rsc=BiuOixuigeBXVJn7
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 2 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 2 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 3 ms
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 GET /_next/static/chunks/app/contact/page-677109846b594b36.js
+ HTTP  11/18/2026 7:15:05 PM 127.0.0.1 Returned 200 in 1 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 2 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/media/22a5144ee8d83bca-s.p.woff2
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 1 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/css/b5ac12979c541929.css
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/media/7d4881bb7e1bf84d-s.p.woff2
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 2 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 2 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/chunks/webpack-a480119b9b32f4f7.js
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 1 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/chunks/4bd1b696-c7408084347438ae.js
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 1 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/chunks/794-96ab5d7caefc5d69.js
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/chunks/main-app-73627c43534390db.js
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/chunks/500-fc3b64d9ff4a32a7.js
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/chunks/app/layout-a16d3e905fd328f0.js
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/chunks/934-42c154d18091dd8c.js
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 3 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/chunks/app/page-498837d3088dfa55.js
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 4 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 3 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 5 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 4 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 3 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 HEAD /
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 HEAD /contact/
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 304 in 1 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 1 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /__next._tree.txt?_rsc=5CB68i4pnAekjehf
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /contact/__next._tree.txt?_rsc=5CB68i4pnAekjehf
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 1 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 1 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /__next._index.txt?_rsc=yIp22O3xgPPxC28X
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /__next.__PAGE__.txt?_rsc=8nTjltbQWvg6NcbE
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 1 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 1 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /contact/__next.contact.__PAGE__.txt?_rsc=BiuOixuigeBXVJn7
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 1 ms
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 GET /_next/static/chunks/app/contact/page-677109846b594b36.js
+ HTTP  11/18/2026 7:15:41 PM 127.0.0.1 Returned 200 in 1 ms

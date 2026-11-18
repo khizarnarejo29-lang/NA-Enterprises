@@ -4,8 +4,8 @@
  *
  * Rules that keep this robust:
  * - Every element's normal style is its FINISHED state. Keyframes only describe
- *   how it gets there, so with reduced motion (animations off) or no CSS
- *   animation support the visitor sees the finished scene.
+ *   how it gets there, so without CSS animation support the visitor sees the
+ *   finished scene.
  * - Stage classes .s1 to .s8 make an element appear at a fixed point in the
  *   loop (s1 first, s8 last) from the transform in --from, then everything
  *   fades away together just before the loop restarts.
@@ -47,13 +47,9 @@ html.js .demo:not([data-inview]) *::before,
 html.js .demo:not([data-inview]) *::after {
   animation-play-state: paused;
 }
-@media (prefers-reduced-motion: reduce) {
-  .demo *,
-  .demo *::before,
-  .demo *::after {
-    animation: none !important;
-  }
-}
+/* The demos are the heart of the site, so they keep playing even when the
+   device asks for reduced motion (many phones have "remove animations" on to
+   save battery). They stay inside their frame and never move the page. */
 
 /* Small helpers for scene parts. */
 .d-bar {
